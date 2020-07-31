@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Start a video conference!</title>
+    <base target="_blank">
+
+    <title>Record</title>
+
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 </head>
+
 <body>
-    Hellew
+
+<div id="container">
+
+    <div id="videos">
+        <video id="livecam" playsinline autoplay muted></video>
+    </div>
+    <div>
+        <button id="start">Start camera</button>
+        <button id="record" disabled>Start Recording</button>
+        <button id="play" disabled>Play</button>
+        <button id="download" disabled>Download</button>
+        <button id="host">Host</button>
+        <button id="connect">Connect</button>
+    </div>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username">
+
+      <label for="session_id">Session_id</label>
+      <input type="text" id="session_id" name="session_id">
+
+    <div>
+
+        <span id="log"></span>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/7.4.0/adapter.js"></script>
+    <script type="text/javascript">
+        window.csrf_token = '{{ csrf_token }}';
+    </script>
+<script src="{% static 'js/peer.js' %}"></script>
+
 </body>
 </html>
